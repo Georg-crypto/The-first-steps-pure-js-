@@ -1,0 +1,89 @@
+.main {
+
+    float: left;
+    margin-left: 40px;
+
+}
+
+.block {
+
+    width: 100px;
+    height: 100px;
+    border: 3px solid red;
+    margin: 5px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+
+}
+
+.block_out {
+
+    text-align: center;
+    margin: 5px;
+    width: 104px;
+    height: 20px;
+    border: 1px solid black;
+        
+}
+
+hr {
+
+    clear: both;
+    
+}
+
+#out3_1 {
+
+    display: none;
+
+}
+
+#div4 {
+
+    padding-top: 10%;
+
+}
+
+.block12 {
+
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    margin: 5px;
+    float: left;
+    
+}
+
+#block12_big {
+
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 90px auto 15px auto;
+   
+}
+
+#but12_1 {
+
+    float: left;
+
+
+}
+
+#but12_2 {
+
+    float: right;
+
+}
+
+#name12 {
+
+    float: left;
+    margin-left: 90px;
+    font-weight: 600;
+    font-size: 20px;
+
+}
