@@ -4,11 +4,17 @@ window.addEventListener('storage', function (e) {
 
     if (localStorage.length == 0) {
 
-        let p = document.querySelector('.p');
-        p.remove();
+        let p = document.querySelectorAll('.p');
+
+        for (let i = 0; i < p.length; i++) {
+
+            p[i].remove();
+
+        }
+
         let newP = document.createElement('p');
         newP.setAttribute('class', 'p');
-        newP.innerHTML = 'You basket:' + '<br>' + 'empty';
+        newP.innerHTML = 'Your basket:' + '<br>' + 'empty';
         content.append(newP);
 
     } else {
@@ -31,16 +37,22 @@ window.addEventListener('storage', function (e) {
 
         }
 
-        let p = document.querySelector('.p');
-        p.remove();
+        let p = document.querySelectorAll('.p');
 
-        let newP = document.createElement('p');
+        for (let i = 0; i < p.length; i++) {
+
+            p[i].remove();
+
+        }
+
         let countQuantity = '';
         let countPrice = '';
+        let markName;
 
         for (let i = 0; i < mainArr.length; i++) {
 
-            newP.setAttribute('value', i + 1);
+            let newP = document.createElement('p');
+
             newP.setAttribute('class', 'p');
 
             for (let key in mainArr[i]) {
@@ -48,6 +60,12 @@ window.addEventListener('storage', function (e) {
                 if (key == 'name') {
 
                     newP.innerHTML += mainArr[i][key];
+
+                    let a = mainArr[i][key];
+                    let arr = a.split('');
+                    markName = arr.pop();
+
+                    newP.setAttribute('value', markName);
 
                 } else if (key == 'quantity' && mainArr[i][key] == 1) {
 
@@ -75,28 +93,41 @@ window.addEventListener('storage', function (e) {
 
             }
 
-            newP.innerHTML += '<br>';
+            content.append(newP);
 
         }
+
 
         if (countQuantity == 1) {
 
+            let newP = document.createElement('p');
+            newP.setAttribute('class', 'p');
             newP.innerHTML += '<hr>' + '<br>' + 'Total ' + '(' + countQuantity + ' item): ' + countPrice + ' USD';
+            content.append(newP);
 
         } else {
 
+            let newP = document.createElement('p');
+            newP.setAttribute('class', 'p');
             newP.innerHTML += '<hr>' + '<br>' + 'Total ' + '(' + countQuantity + ' items): ' + countPrice + ' USD';
+            content.append(newP);
 
         }
-
-
-        content.append(newP);
 
     }
 
 
-
 });
+
+let clear = document.querySelector('#clear_button');
+
+clear.onclick = () => {
+
+    localStorage.clear();
+
+    location.reload();
+
+}
 
 
 

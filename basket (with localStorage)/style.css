@@ -29,6 +29,7 @@
     background-color: green;
     padding: 5px 5px;
     margin-top: 185px;
+    display: inline;
 
 }
 
@@ -39,3 +40,6 @@
     border-radius: 3px;
 
 }
+
+
+
