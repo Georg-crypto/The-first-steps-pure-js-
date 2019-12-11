@@ -1,24 +1,62 @@
-let button5Add = document.querySelector('#button5_add');
-let count5Add = 0;
-let assArr5Add = {};
+let buttonAdd = document.querySelector('#button_add');
+let countAdd = 0;
+let assArrAdd = {};
 
-button5Add.onclick = () => {
+buttonAdd.onclick = () => {
 
-    assArr5Add = {};
-    count5Add++
-    assArr5Add.name = 'Product№ 5';
-    assArr5Add.quantity = count5Add;
-    assArr5Add.price = 50 * count5Add;
+    assArrAdd = {};
+    countAdd++
+    assArrAdd.name = 'Product№ 5';
+    assArrAdd.quantity = countAdd;
+    assArrAdd.price = 50 * countAdd;
 
-    assArr5Add = JSON.stringify(assArr5Add);
+    let newP = document.createElement('p');
+    newP.setAttribute('class', 'count_items');
 
-    localStorage.setItem('5', assArr5Add);
+    for (let key in assArrAdd) {
+
+        if (key == 'name') {
+
+            newP.innerHTML += assArrAdd[key];
+
+        } else if (key == 'quantity' && assArrAdd[key] == 1) {
+
+            newP.innerHTML += '(' + assArrAdd[key] + ' item): ';
+
+        } else if (key == 'quantity' && assArrAdd[key] !== 1) {
+
+            newP.innerHTML += '(' + assArrAdd[key] + ' items): ';
+
+        } else {
+
+            newP.innerHTML += assArrAdd[key] + ' USD';
+        }
+
+    }
+
+    let content = document.querySelector('.content');
+
+    let delP = document.querySelector('.count_items');
+
+    if (delP) {
+
+        delP.remove();
+
+    }
+
+    content.append(newP);
+
+    assArrAdd = JSON.stringify(assArrAdd);
+
+    localStorage.setItem('5', assArrAdd);
 
 }
 
-let button5Del = document.querySelector('#button5_del');
+let buttonDel = document.querySelector('#button_del');
 
-button5Del.onclick = () => {
+buttonDel.onclick = () => {
+
+    let delP = document.querySelector('.count_items');
 
     if (localStorage.getItem('5') == null) {
 
@@ -26,24 +64,26 @@ button5Del.onclick = () => {
 
     } else {
 
-        let assArr5Del = JSON.parse(localStorage[5]);
+        let assArrDel = JSON.parse(localStorage[5]);
         let tmp;
 
-        for (let key in assArr5Del) {
+        for (let key in assArrDel) {
 
-            tmp = assArr5Del[key];
+            tmp = assArrDel[key];
 
         }
 
         if (tmp == 50) {
 
+            delP.remove();
+
             localStorage.removeItem('5');
 
-            count5Add--;
+            countAdd--;
 
         } else {
 
-            for (let key in assArr5Del) {
+            for (let key in assArrDel) {
 
                 if (key == 'name') {
 
@@ -51,21 +91,51 @@ button5Del.onclick = () => {
 
                 } else if (key == 'quantity') {
 
-                    assArr5Del.quantity = assArr5Del[key] - 1;
+                    assArrDel.quantity = assArrDel[key] - 1;
 
                 } else {
 
-                    assArr5Del.price = assArr5Del[key] - 50;
+                    assArrDel.price = assArrDel[key] - 50;
 
                 }
 
             }
 
-            count5Add--;
+            countAdd--;
 
-            assArr5Del = JSON.stringify(assArr5Del);
+            let newP = document.createElement('p');
+            newP.setAttribute('class', 'count_items');
 
-            localStorage.setItem('5', assArr5Del);
+            for (let key in assArrDel) {
+
+                if (key == 'name') {
+
+                    newP.innerHTML += assArrDel[key];
+
+                } else if (key == 'quantity' && assArrDel[key] == 1) {
+
+                    newP.innerHTML += '(' + assArrDel[key] + ' item): ';
+
+                } else if (key == 'quantity' && assArrDel[key] !== 1) {
+
+                    newP.innerHTML += '(' + assArrDel[key] + ' items): ';
+
+                } else {
+
+                    newP.innerHTML += assArrDel[key] + ' USD';
+                }
+
+            }
+
+            let content = document.querySelector('.content');
+
+            delP.remove();
+
+            content.append(newP);
+
+            assArrDel = JSON.stringify(assArrDel);
+
+            localStorage.setItem('5', assArrDel);
 
         }
 

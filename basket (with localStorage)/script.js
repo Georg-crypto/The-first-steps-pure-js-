@@ -47,7 +47,6 @@ window.addEventListener('storage', function (e) {
 
         let countQuantity = '';
         let countPrice = '';
-        let markName;
 
         for (let i = 0; i < mainArr.length; i++) {
 
@@ -60,12 +59,6 @@ window.addEventListener('storage', function (e) {
                 if (key == 'name') {
 
                     newP.innerHTML += mainArr[i][key];
-
-                    let a = mainArr[i][key];
-                    let arr = a.split('');
-                    markName = arr.pop();
-
-                    newP.setAttribute('value', markName);
 
                 } else if (key == 'quantity' && mainArr[i][key] == 1) {
 
@@ -119,15 +112,7 @@ window.addEventListener('storage', function (e) {
 
 });
 
-let clear = document.querySelector('#clear_button');
 
-clear.onclick = () => {
-
-    localStorage.clear();
-
-    location.reload();
-
-}
 
 
 
